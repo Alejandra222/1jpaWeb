@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public abstract class Accion {
 
-	private static final String RUTA = "vistas2/";
+	private static final String RUTA = "vistas2/libros/";
 	
 	public abstract void ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 

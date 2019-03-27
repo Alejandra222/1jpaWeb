@@ -13,7 +13,7 @@
     <description></description>
     <display-name>ServletControladorFrontal</display-name>
     <servlet-name>ServletControladorFrontal</servlet-name>
-    <servlet-class>es.avalon.web.controller.acciones.ServletControladorFrontal</servlet-class>
+    <servlet-class>es.avalon.web.controller.ServletControladorFrontal</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletControladorFrontal</servlet-name>
