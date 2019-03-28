@@ -35,7 +35,7 @@
 
 	<div class="container">
 		<h3>Lista de Capitulos</h3>
-		<a href='ServletControladorFrontal?accion=formularioInsertarCapitulo'
+		<a href='ServletControladorFrontal?accion=formularioInsertarCapitulo&titulo_libro=${param.titulo}'
 			class='btn btn-info btn-sm'><span
 			class='glyphicon glyphicon-plus'></span> Nuevo</a>
 
@@ -55,11 +55,11 @@
 					<td>${capitulo.paginas}</td>
 					<td>${capitulo.libro.titulo}</td>	
 					<th><a
-						href="ServletControlador?accion=borrarCapitulo&titulo=${capitulo.titulo}"
+						href="ServletControladorFrontal?accion=borrarCapitulo&titulo=${capitulo.titulo}&libro_titulo=${capitulo.libro.titulo}"
 						class='btn btn-warning btn-sm'><span
 							class='glyphicon glyphicon-trash'></span> Borrar</a></th>
 					<th><a
-						href="ServletControlador?accion=editarCapitulo&titulo=${capitulo.titulo}"
+						href="ServletControladorFrontal?accion=editarCapitulo&titulo=${capitulo.titulo}&libro_titulo=${capitulo.libro.titulo}"
 						class='btn btn-primary btn-sm'><span
 							class='glyphicon glyphicon-pencil'></span> Editar</a></th>
 				</tr>

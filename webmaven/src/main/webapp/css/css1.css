@@ -25,12 +25,12 @@ th, td {
 }
 
 tr:nth-child(even){
-	background-color: hsla(0, 100%, 90%, 0.3);
+	background-color: white;
 
 }
 
 tr th {
-  background-color: #c0c0c0;
+  background-color: #e9e7e7;
   color: white;
 }
 

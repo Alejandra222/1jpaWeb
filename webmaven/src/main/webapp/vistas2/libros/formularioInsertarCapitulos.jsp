@@ -12,8 +12,8 @@
 <form action="ServletControladorFrontal">
 
 <p>Titulo: <input type="text" name="titulo"/></p><br>
-<p>Paginas: <input type="text" name="paginas"/></p><br>
-<p>Libro: <input type="text" name="libro_titulo"/></p>
+<p>Paginas: <input type="text" name="paginas"/></p><br> 
+<p>Libro: <input type="text" name="libro_titulo" value="${param.titulo_libro}"/></p> 
 
 <input type="submit" value="enviar"/>
 

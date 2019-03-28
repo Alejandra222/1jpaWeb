@@ -1,0 +1,44 @@
+package es.avalon.web.controller.acciones;
+
+import java.io.IOException;
+
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import es.avalon.jpa.negocio.Capitulo;
+import es.avalon.jpa.negocio.Libro;
+import es.avalon.repositorios.CapituloRepositorioJPA;
+import es.avalon.repositorios.LibroRepositorioJPA;
+
+public class SalvarCapituloAccion extends Accion {
+
+	@Override
+	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	
+		LibroRepositorioJPA repoLibro = new LibroRepositorioJPA();
+		CapituloRepositorioJPA repoCapitulo = new CapituloRepositorioJPA();
+		
+
+		Libro libro = repoLibro.buscarUno(request.getParameter("libro_titulo"));
+		Capitulo capitu = new Capitulo(request.getParameter("titulo"), Integer.parseInt(request.getParameter("paginas")),libro);
+		
+		repoCapitulo.salvarCapitulo(capitu);
+		
+
+		//List<Capitulo> lista =new CapituloRepositorioJPA().buscarTodosLosCapitulos();
+		//request.setAttribute("listaCapitulo", lista);
+
+		
+		//request.setAttribute("listaCapitulo", repoCapitulo.buscarTodosParaUnLibro(libro));
+
+	//	despachar(request, response, "listadoCapitulos.jsp");	
+		
+		response.sendRedirect("ServletControladorFrontal?accion=listaCapituloPorLibro&titulo="+request.getParameter("libro_titulo"));
+
+	}
+
+}

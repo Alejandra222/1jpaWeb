@@ -12,6 +12,7 @@ public class FormularioInsertarCapitulos extends Accion {
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		request.setAttribute("libro_titulo", request.getParameter("libro_titulo"));
 		despachar(request, response, "formularioInsertarCapitulos.jsp");
 
 	}

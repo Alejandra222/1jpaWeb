@@ -14,11 +14,14 @@ import es.avalon.web.controller.acciones.FormularioInsertarCapitulos;
 import es.avalon.web.controller.acciones.InsertarCapituloAccion;
 import es.avalon.web.controller.acciones.InsertarLibroAccion;
 import es.avalon.web.controller.acciones.Accion;
+import es.avalon.web.controller.acciones.DeleteCapituloAccion;
 import es.avalon.web.controller.acciones.DeleteLibroAccion;
 import es.avalon.web.controller.acciones.FormularioEditar;
+import es.avalon.web.controller.acciones.FormularioEditarCapitulo;
 import es.avalon.web.controller.acciones.ListaLibrosAccion;
 import es.avalon.web.controller.acciones.MostrarCapitulosDeLibro;
 import es.avalon.web.controller.acciones.OrdenarLibroAccion;
+import es.avalon.web.controller.acciones.SalvarCapituloAccion;
 import es.avalon.web.controller.acciones.SalvarLibroAccion;
 
 
@@ -90,6 +93,19 @@ public class ServletControladorFrontal extends HttpServlet {
 					}else if (tipoAccion.equals("listaCapituloPorLibro")) {
 
 						accion = new MostrarCapitulosDeLibro();
+					
+					}else if (tipoAccion.equals("borrarCapitulo")) {
+
+						accion = new DeleteCapituloAccion();
+					
+					}else if (tipoAccion.equals("editarCapitulo")) {
+
+						accion = new FormularioEditarCapitulo();
+					
+					}else if (tipoAccion.equals("salvarCapitulo")) {
+
+						System.out.println("Hola *************+++");
+						accion = new SalvarCapituloAccion();
 					
 					}
 
