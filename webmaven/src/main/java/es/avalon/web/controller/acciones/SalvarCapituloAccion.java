@@ -12,6 +12,7 @@ import es.avalon.jpa.negocio.Capitulo;
 import es.avalon.jpa.negocio.Libro;
 import es.avalon.repositorios.CapituloRepositorioJPA;
 import es.avalon.repositorios.LibroRepositorioJPA;
+import es.avalon.servicios.ServicioLibros;
 
 public class SalvarCapituloAccion extends Accion {
 
@@ -19,14 +20,14 @@ public class SalvarCapituloAccion extends Accion {
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	
-		LibroRepositorioJPA repoLibro = new LibroRepositorioJPA();
-		CapituloRepositorioJPA repoCapitulo = new CapituloRepositorioJPA();
-		
+		//LibroRepositorioJPA repoLibro = new LibroRepositorioJPA();
+		//CapituloRepositorioJPA repoCapitulo = new CapituloRepositorioJPA();
+		ServicioLibros sl = new ServicioLibros();
 
-		Libro libro = repoLibro.buscarUno(request.getParameter("libro_titulo"));
+		Libro libro = sl.buscarUnoLibro(request.getParameter("libro_titulo"));
 		Capitulo capitu = new Capitulo(request.getParameter("titulo"), Integer.parseInt(request.getParameter("paginas")),libro);
 		
-		repoCapitulo.salvarCapitulo(capitu);
+		sl.salvarCapitulo(capitu);
 		
 
 		//List<Capitulo> lista =new CapituloRepositorioJPA().buscarTodosLosCapitulos();

@@ -4,6 +4,9 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="serviciosavalon-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/serviciosavalon/serviciosavalon">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="respositoriosJPA-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/respositoriosJPA/respositoriosJPA">
             <dependency-type>uses</dependency-type>
         </dependent-module>

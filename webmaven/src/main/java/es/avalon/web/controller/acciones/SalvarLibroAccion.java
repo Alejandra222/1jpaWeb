@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.avalon.jpa.negocio.Libro;
 import es.avalon.repositorios.LibroRepositorioJPA;
+import es.avalon.servicios.ServicioLibros;
 
 public class SalvarLibroAccion extends Accion {
 
@@ -20,10 +21,11 @@ public class SalvarLibroAccion extends Accion {
 		Libro miLibro = new Libro(request.getParameter("titulo"), request.getParameter("autor"),
 				Integer.parseInt(request.getParameter("paginas")));
 
-		LibroRepositorioJPA repo = new LibroRepositorioJPA();
-		repo.salvar(miLibro);
+		//LibroRepositorioJPA repo = new LibroRepositorioJPA();
+		ServicioLibros sl = new ServicioLibros();
+		sl.salvarLibro(miLibro);
 
-		List<Libro> lista = repo.buscarTodos();
+		List<Libro> lista = sl.buscarTodosLosLibros();
 		request.setAttribute("listaLibros", lista);
 
 		despachar(request, response, "listado.jsp");

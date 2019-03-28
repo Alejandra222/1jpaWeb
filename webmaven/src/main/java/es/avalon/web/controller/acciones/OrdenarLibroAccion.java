@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.avalon.jpa.negocio.Libro;
 import es.avalon.repositorios.LibroRepositorioJPA;
+import es.avalon.servicios.ServicioLibros;
 
 public class OrdenarLibroAccion extends Accion {
 
@@ -17,8 +18,9 @@ public class OrdenarLibroAccion extends Accion {
 			throws ServletException, IOException {
 	
 		
-		 LibroRepositorioJPA lr= new LibroRepositorioJPA();
-		 List<Libro> lista =lr.buscarTodosOrdenados(request.getParameter("orden"));
+		// LibroRepositorioJPA lr= new LibroRepositorioJPA();
+		ServicioLibros sl = new ServicioLibros();
+		 List<Libro> lista =sl.buscarTodosOrdenadosLibro(request.getParameter("orden"));
 		 
 		request.setAttribute("listaLibros", lista);
 

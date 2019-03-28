@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.avalon.jpa.negocio.Libro;
 import es.avalon.repositorios.LibroRepositorioJPA;
+import es.avalon.servicios.ServicioLibros;
 
 public class DeleteLibroAccion extends Accion {
 
@@ -21,12 +22,13 @@ public class DeleteLibroAccion extends Accion {
 		
 		System.out.println("************OBTENGO " + request.getParameter("titulo"));
 		Libro lb = new Libro(request.getParameter("titulo"));
-		LibroRepositorioJPA repositorio= new LibroRepositorioJPA();
+//		LibroRepositorioJPA repositorio= new LibroRepositorioJPA();
 		
-		repositorio.delete(lb);
+		ServicioLibros sl = new ServicioLibros();
+		sl.deleteLibro(lb);
 		
 
-		List<Libro> lista = repositorio.buscarTodos();
+		List<Libro> lista = sl.buscarTodosLosLibros();
 		request.setAttribute("listaLibros", lista);
 
 

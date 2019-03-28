@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.avalon.jpa.negocio.Capitulo;
 import es.avalon.repositorios.CapituloRepositorioJPA;
+import es.avalon.servicios.ServicioLibros;
 
 public class FormularioEditarCapitulo extends Accion {
 
@@ -18,8 +19,9 @@ public class FormularioEditarCapitulo extends Accion {
 		
 		System.out.println("************OBTENGO " + request.getParameter("titulo"));
 		
-		CapituloRepositorioJPA repoCapitulo = new CapituloRepositorioJPA();
-		Capitulo capiEdit = repoCapitulo.buscarUnCapitulo(request.getParameter("titulo"));
+		//CapituloRepositorioJPA repoCapitulo = new CapituloRepositorioJPA();
+		ServicioLibros sl = new ServicioLibros();
+		Capitulo capiEdit = sl.buscarUnCapitulo(request.getParameter("titulo"));
 		
 		System.out.println("PEPE*******  "+capiEdit.getTitulo());
 		request.setAttribute("editoLibro", capiEdit);

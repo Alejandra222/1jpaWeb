@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.avalon.jpa.negocio.Capitulo;
 import es.avalon.repositorios.CapituloRepositorioJPA;
+import es.avalon.servicios.ServicioLibros;
 
 public class DeleteCapituloAccion extends Accion {
 
@@ -19,8 +20,9 @@ public class DeleteCapituloAccion extends Accion {
 		
 		System.out.println(request.getParameter("libro_titulo")+" ************OBTENGO " + request.getParameter("titulo"));
 		
-		CapituloRepositorioJPA cr = new CapituloRepositorioJPA();
-		cr.deleteCapitulo(new Capitulo(request.getParameter("titulo")));
+		//CapituloRepositorioJPA cr = new CapituloRepositorioJPA();
+		ServicioLibros sl = new ServicioLibros();
+		sl.deleteCapitulo(new Capitulo(request.getParameter("titulo")));
 
 		
 		response.sendRedirect("ServletControladorFrontal?accion=listaCapituloPorLibro&titulo="+request.getParameter("libro_titulo"));

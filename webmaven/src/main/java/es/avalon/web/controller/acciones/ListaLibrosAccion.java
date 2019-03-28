@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.avalon.jpa.negocio.Libro;
 import es.avalon.repositorios.LibroRepositorioJPA;
+import es.avalon.servicios.ServicioLibros;
 
 
 
@@ -21,14 +22,14 @@ public class ListaLibrosAccion extends Accion {
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		
-		 LibroRepositorioJPA lr= new LibroRepositorioJPA();
-		 List<Libro> lista =lr.buscarTodos();
+		 
+		List<Libro> lista =new ServicioLibros().buscarTodosLosLibros();
 		 
 		request.setAttribute("listaLibros", lista);
 
 		despachar(request, response, "listado.jsp");
 
-		//persisitencia3(request, response);
+
 	}
 
 //	private void persisitencia3(HttpServletRequest request, HttpServletResponse response)
