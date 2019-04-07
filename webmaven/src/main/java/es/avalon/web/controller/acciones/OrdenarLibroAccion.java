@@ -20,7 +20,7 @@ public class OrdenarLibroAccion extends Accion {
 		
 		// LibroRepositorioJPA lr= new LibroRepositorioJPA();
 		ServicioLibros sl = new ServicioLibros();
-		 List<Libro> lista =sl.buscarTodosOrdenadosLibro(request.getParameter("orden"));
+		 List<Libro> lista =sl.buscarTodosOrdenadosPorCampoLibro(request.getParameter("accion"));
 		 
 		request.setAttribute("listaLibros", lista);
 

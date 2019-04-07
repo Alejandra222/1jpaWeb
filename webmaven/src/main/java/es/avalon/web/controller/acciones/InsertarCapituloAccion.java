@@ -34,11 +34,9 @@ public class InsertarCapituloAccion extends Accion {
 		sl.insertarCapitulo(capitu);
 
 		//request.setAttribute("listaCapitulo", repoCapitulo.buscarTodosParaUnLibro(libro));
-
 		//	despachar(request, response, "listadoCapitulos.jsp");	
-
-		response.sendRedirect("ServletControladorFrontal?accion=listaCapituloPorLibro&titulo="+request.getParameter("libro_titulo"));
-
+		response.sendRedirect("ServletControladorFrontal?accion=envioLibro&libro_titulo="+request.getParameter("libro_titulo"));
+		
 	}
 
 }

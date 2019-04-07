@@ -34,16 +34,4 @@ public class SalvarLibroAccion extends Accion {
 
 	}
 
-//	private void persisitencia3(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		Libro miLibro = new Libro(request.getParameter("titulo"), request.getParameter("autor"),
-//				Integer.parseInt(request.getParameter("paginas")));
-//		miLibro.updateLibro();;
-//
-//		List<Libro> lista = Libro.buscarTodos();
-//		request.setAttribute("listaLibros", lista);
-//
-//		despachar(request, response, "listado.jsp");
-//	}
-
 }

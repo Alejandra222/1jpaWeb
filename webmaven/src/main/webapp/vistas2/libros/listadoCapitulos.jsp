@@ -20,54 +20,116 @@
 
 
 </head>
+
 <body>
 
 
-	<%-- <% List<Capitulo> listaLibros = (List<Capitulo>) request.getAttribute("listaLibros"); %> --%>
-
-	<!-- <h3>Buscador de libros</h3> -->
-
-	<!-- <form action=""> -->
-	<!-- <input type="text" name="titulo" placeholder="   Titulo..."> -->
-	<!-- <input type="submit" name="aceptar" value="Buscar"> -->
-	<!-- <input type="hidden" name="accion" value="buscarTitulo"> -->
-	<!-- </form> -->
+	<%-- 	<% List<Capitulo> lista = (List<Capitulo>) request.getAttribute("listaCapitulos"); %> --%>
 
 	<div class="container">
-		<h3>Lista de Capitulos</h3>
-		<a href='ServletControladorFrontal?accion=formularioInsertarCapitulo&titulo_libro=${param.titulo}'
-			class='btn btn-info btn-sm'><span
-			class='glyphicon glyphicon-plus'></span> Nuevo</a>
+		<div class='row'>
+
+			<h3 align="center" class="titulo">
+				Capítulos <span class="glyphicon glyphicon-search"></span>
+			</h3>
+
+			<div class='row'>
+				<div class='col-xs-4'></div>
+				<div class='col-xs-8'>
+
+					<form action="">
+
+						<p>
+							<input class='glyphicon glyphicon-trash' type="text"
+								name="titulo" placeholder=" título..." /> <input
+								type="submit" value="Buscar" class='btn btn-warning'>
+						</p>
+						
+						<input type="hidden" name="libro_titulo"
+							value="${param.libro_titulo}"> 
+							
+
+						<input type="hidden" name="accion" value="searchCapitulo" />
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class='row'>
+			<div class='col-xs-7'>
+
+				<c:choose>
+					<c:when test="${param.libro_titulo.equals('')}">
+						<h3>
+							Lista de <span class="glyphicon glyphicon-list-alt"></span>
+						</h3>
+					</c:when>
+
+					<c:otherwise>
+						<h3>Capítulos del libro: ${param.libro_titulo}</h3>
+					</c:otherwise>
+				</c:choose>
+
+
+
+			</div>
+
+			<div class='col-xs-2 margintop'>
+				<c:if test="${!param.libro_titulo.equals('')}">
+
+					<a
+						href="ServletControladorFrontal?accion=formularioInsertCapitulo&libro_titulo=${param.libro_titulo}"
+						class='colorNuevo'><span class='glyphicon glyphicon-plus'></span>
+						Nuevo</a>
+				</c:if>
+			</div>
+
+			<div class='col-xs-3 margintop'>
+				<a href="ServletControladorFrontal?accion=" class='colorNuevo'><span
+					class='glyphicon glyphicon-book'></span> Libros</a>
+			</div>
+		</div>
+
+
 
 		<table>
 
 			<tr>
-				<th><a href="?accion=titulo">Titulo</a></th>
-				<th><a href="?accion=autor">Paginas</a></th>
-	<th><a href="?accion=libro">Libro</a></th>
+				<th><a
+					href="?accion=ordenarCapitulosPorCampo&filtro=titulo&libro_titulo=${param.libro_titulo}">TÍTULO</a></th>
+				<th><a
+					href="?accion=ordenarCapitulosPorCampo&filtro=paginas&libro_titulo=${param.libro_titulo}">PÁGINAS</a></th>
+
+				<%-- 		<th>	<a	href="?accion=libro_titulo&filtro=libro_titulo&titulo=<%=request.getParameter("titulo")%>">CAPITULO_LIBRO</a></th> --%>
 			</tr>
 
+			<c:forEach items="${listaCapitulo}" var="l">
 
-
-			<c:forEach items="${listaCapitulo}" var="capitulo">
 				<tr>
-					<td>${capitulo.titulo}</td>
-					<td>${capitulo.paginas}</td>
-					<td>${capitulo.libro.titulo}</td>	
-					<th><a
-						href="ServletControladorFrontal?accion=borrarCapitulo&titulo=${capitulo.titulo}&libro_titulo=${capitulo.libro.titulo}"
-						class='btn btn-warning btn-sm'><span
-							class='glyphicon glyphicon-trash'></span> Borrar</a></th>
-					<th><a
-						href="ServletControladorFrontal?accion=editarCapitulo&titulo=${capitulo.titulo}&libro_titulo=${capitulo.libro.titulo}"
-						class='btn btn-primary btn-sm'><span
-							class='glyphicon glyphicon-pencil'></span> Editar</a></th>
+					<td>${l.titulo}</td>
+					<td>${l.paginas}</td>
+					<%-- 				<td>${l.libro_titulo}</td> --%>
+
+
+					<c:if test="${!param.libro_titulo.equals('')}">
+
+
+						<td><a
+							href="ServletControladorFrontal?accion=borrarCapitulo&titulo=${l.titulo}&libro_titulo=${param.libro_titulo}"
+							class='btn btn-light btn-sm colorBorrar'><span
+								class='glyphicon glyphicon-trash'></span> Borrar</a> <a
+							href="ServletControladorFrontal?accion=editarCapitulo&titulo=${l.titulo}&libro_titulo=${param.libro_titulo}"
+							class='btn btn-light btn-sm colorEditar'><span
+								class='glyphicon glyphicon-pencil'></span> Editar</a></td>
+
+					</c:if>
 				</tr>
 			</c:forEach>
-
 		</table>
-		</br>
 
-		<!-- <a href="ServletControladorCapitulo?accion=formularioInsertar"/>insertar</a> -->
+	</div>
 </body>
 </html>

@@ -35,20 +35,5 @@ public class DeleteLibroAccion extends Accion {
 		despachar(request, response, "listado.jsp");
 	}
 
-	
-	
-//	private void persistencia3(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		System.out.println("************OBTENGO " + request.getParameter("titulo"));
-//		Libro lb = new Libro(request.getParameter("titulo"));
-//		lb.deleteLibro();
-//		
-//
-//		List<Libro> lista = Libro.buscarTodos();
-//		request.setAttribute("listaLibros", lista);
-//
-//
-//		despachar(request, response, "listado.jsp");
-//	}
 
 }

@@ -22,7 +22,7 @@ public class ListaLibrosAccion extends Accion {
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		
-		 
+		 System.out.println("Listar Todos los libros");
 		List<Libro> lista =new ServicioLibros().buscarTodosLosLibros();
 		 
 		request.setAttribute("listaLibros", lista);
@@ -31,13 +31,5 @@ public class ListaLibrosAccion extends Accion {
 
 
 	}
-
-//	private void persisitencia3(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		List<Libro> lista = Libro.buscarTodos();
-//		request.setAttribute("listaLibros", lista);
-//
-//		despachar(request, response, "listado.jsp");
-//	}
 
 }

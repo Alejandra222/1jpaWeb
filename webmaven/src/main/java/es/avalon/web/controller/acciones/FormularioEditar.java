@@ -17,9 +17,6 @@ public class FormularioEditar extends Accion {
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		
-		//persistencia3(request, response);
-		
 		System.out.println("************OBTENGO " + request.getParameter("titulo"));
 		String titulo =request.getParameter("titulo");
 		
@@ -32,15 +29,5 @@ public class FormularioEditar extends Accion {
 		despachar(request, response, "formularioEditar.jsp");
 		
 	}
-
-//	private void persistencia3(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		System.out.println("************OBTENGO " + request.getParameter("titulo"));
-//		Libro lEditar=Libro.buscarUnLibroPorTitulo(request.getParameter("titulo"));
-//		
-//		request.setAttribute("editoLibro", lEditar);
-//		
-//		despachar(request, response, "formularioEditar.jsp");
-//	}
 
 }

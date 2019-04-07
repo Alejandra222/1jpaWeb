@@ -24,26 +24,13 @@ public class DeleteCapituloAccion extends Accion {
 		ServicioLibros sl = new ServicioLibros();
 		sl.deleteCapitulo(new Capitulo(request.getParameter("titulo")));
 
+		response.sendRedirect("ServletControladorFrontal?accion=envioLibro&libro_titulo="+request.getParameter("libro_titulo"));
 		
-		response.sendRedirect("ServletControladorFrontal?accion=listaCapituloPorLibro&titulo="+request.getParameter("libro_titulo"));
-	
 		//despachar(request, response, "listadoCapitulos.jsp");
 		
 	
 
 	}
 
-//	private void persistencia3(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		System.out.println("************OBTENGO " + request.getParameter("titulo"));
-//		Capitulo lb = new Capitulo(request.getParameter("titulo"));
-//		lb.deleteCapitulo();
-//
-//		List<Capitulo> lista = Capitulo.buscarTodosLosCapitulos();
-//		request.setAttribute("listaCapitulo", lista);
-//
-//
-//		despachar(request, response, "listadoCapitulos.jsp");
-//	}
 
 }

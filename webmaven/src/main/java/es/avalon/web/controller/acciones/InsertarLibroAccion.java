@@ -19,8 +19,6 @@ public class InsertarLibroAccion extends Accion {
 			throws ServletException, IOException {
 
 
-		//persistencia3(request, response);
-
 		Libro miLibro = new Libro(request.getParameter("titulo"), request.getParameter("autor"),
 				Integer.parseInt(request.getParameter("paginas")));
 
@@ -36,17 +34,5 @@ public class InsertarLibroAccion extends Accion {
 		despachar(request, response, "listado.jsp");
 
 	}
-
-	//	private void persistencia3(HttpServletRequest request, HttpServletResponse response)
-	//			throws ServletException, IOException {
-	//		Libro miLibro = new Libro(request.getParameter("titulo"), request.getParameter("autor"),
-	//				Integer.parseInt(request.getParameter("paginas")));
-	//		miLibro.insertar();
-	//
-	//		List<Libro> lista = Libro.buscarTodos();
-	//		request.setAttribute("listaLibros", lista);
-	//
-	//		despachar(request, response, "listado.jsp");
-	//	}
 
 }

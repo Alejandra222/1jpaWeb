@@ -17,66 +17,80 @@
 </head>
 <body>
 
-<%-- 	<% List<Libro> listaLibros = (List<Libro>) request.getAttribute("listaLibros");%> --%>
 
-<h3>Buscador de libros</h3>
 
-<form action="">
-<input type="text" name="titulo" placeholder="   Titulo...">
-<input type="submit" name="aceptar" value="Buscar">
-<input type="hidden" name="accion" value="buscarTitulo">
-</form>
+
+<%-- 	<% List<Libro> listaLibros = (List<Libro>) request.getAttribute("listaLibros"); %> --%>
 
 <div class="container">
-	<h3>Lista de Libros</h3>
-	<a href='ServletControladorFrontal?accion=formularioInsertar' class='btn btn-info btn-sm'><span class='glyphicon glyphicon-plus'></span>    Nuevo</a>
-	<a href="ServletControladorFrontal?accion=envioLibro" class='btn btn-info btn-sm'><span class='glyphicon glyphicon-book'></span> Todos los capitulos</a>
-		
+<div class='row'>
+
+<h3 align="center" class="titulo">   Libros   <span class="glyphicon glyphicon-search"></span></h3>
+
+<div class='row'>
+<div class='col-xs-4'></div>
+<div class='col-xs-8'>
+	
+	<form action="">
+	
+		<p>
+			<input class='glyphicon glyphicon-trash' type="text" name="titulo" placeholder=" título..." />
+			<input type="submit" value="Buscar" class='btn btn-warning'>
+
+		</p>
+		<input type="hidden" name="accion" value="searchLibro" />
+	</form>
+	
+</div>
+</div>
+</div>
+</div>
+
+<div class="container">
+<div class='row'>
+<div class='col-xs-7'>
+<h3>Lista de <span class="glyphicon glyphicon-book"></span></h3>
+</div>
+
+<div class='col-xs-2 margintop'>	
+	<a href="ServletControladorFrontal?accion=formularioInsertar" class='colorNuevo'><span class='glyphicon glyphicon-plus'></span>    Nuevo</a>
+</div>
+
+<div class='col-xs-3 margintop'>	
+	<a href="ServletControladorFrontal?accion=listaCapitulos&libro_titulo=" class='colorNuevo'><span class='glyphicon glyphicon-list-alt'></span>   Capítulos</a>
+</div>
+</div>
+	
+
+	
 	<table>
 
 		<tr>
-			<th><a href="ServletControladorFrontal?accion=ordenar&orden=titulo">Titulo</a></th>
-			<th><a href="ServletControladorFrontal?accion=ordenar&orden=autor">Autor</a></th>
-			<th><a href="ServletControladorFrontal?accion=ordenar&orden=paginas">Paginas</a></th>
+			<th><a href="ServletControladorFrontal?accion=titulo">TÍTULO</a></th>
+			<th><a href="ServletControladorFrontal?accion=autor">AUTOR</a></th>
+			<th><a href="ServletControladorFrontal?accion=paginas">PÁGINAS</a></th>
 		</tr>
 
-<%-- 		<%for (Libro l : listaLibros) {%> --%>
-
-<!-- 		<tr> -->
-<%-- 			<td><%=l.getTitulo()%></td> --%>
-<%-- 			<td><%=l.getAutor()%></td> --%>
-<%-- 			<td><%=l.getPaginas()%></td> --%>
-			
-<%-- 			<th><a href="ServletControladorLibros?accion=editar&titulo=<%=l.getTitulo()%>" class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-trash'></span>     Borrar</a></th> --%>
-<%-- 			<th><a href="ServletControladorLibros?accion=editar&titulo=<%=l.getTitulo()%>" class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-pencil'></span>     Editar</a></th> --%>
-<%-- 			<th><a href="ServletControladorCapitulo?accion=envioLibro&titulo=<%=l.getTitulo()%>" class='btn btn-info btn-sm'><span class='glyphicon glyphicon-book'></span>     Ver capitulos</a></th> --%>
-		
-<!-- 		</tr> -->
-
-<%-- 		<%}%> --%>
 		
 		
-		
-		
-	<c:forEach items ="${listaLibros}" var="l">
+		<c:forEach items ="${listaLibros}" var="l">
      
          	<tr>
 			<td>${l.titulo}</td>
 			<td>${l.autor}</td>
 			<td>${l.paginas}</td>
 		
-			<td><a href="ServletControladorFrontal?accion=borrar&titulo=${l.titulo}" class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-trash'></span>     Borrar</a></td>
-			<td><a href="ServletControladorFrontal?accion=editarFormulario&titulo=${l.titulo}" class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-pencil'></span>     Editar</a></td>
-			<td><a href="ServletControladorFrontal?accion=listaCapituloPorLibro&titulo=${l.titulo}" class='btn btn-info btn-sm'><span class='glyphicon glyphicon-book'></span>     Ver capitulos</a></td>
+			<td><a href="ServletControladorFrontal?accion=borrar&titulo=${l.titulo}" class='btn btn-light btn-sm colorBorrar'><span class='glyphicon glyphicon-trash'></span>     Borrar</a></td>
+			<td><a href="ServletControladorFrontal?accion=editarFormulario&titulo=${l.titulo}" class='btn btn-light btn-sm colorEditar'><span class='glyphicon glyphicon-pencil'></span>     Editar</a></td>
+			<td><a href="ServletControladorFrontal?accion=envioLibro&libro_titulo=${l.titulo}" class='btn btn-light btn-sm colorIrCapitulo'><span class='glyphicon glyphicon-eye-open'></span>     Ver capitulos</a></td>
 		
 		</tr>
+		
+		
       </c:forEach>
-      
-      
       
 	</table>
 	
-</div>	
-<!-- <a href="ServletControladorLibros?accion=formularioInsertar"/>insertar</a> -->
+	</div>
 </body>
 </html>

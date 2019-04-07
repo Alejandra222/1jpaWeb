@@ -25,7 +25,7 @@ public class FormularioEditarCapitulo extends Accion {
 		
 		System.out.println("PEPE*******  "+capiEdit.getTitulo());
 		request.setAttribute("editoLibro", capiEdit);
-		
+		request.setAttribute("libro_titulo", request.getParameter("libro_titulo"));
 		despachar(request, response, "formularioEditarCapitulos.jsp");
 
 	}

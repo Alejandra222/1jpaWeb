@@ -28,18 +28,12 @@ public class SalvarCapituloAccion extends Accion {
 		Capitulo capitu = new Capitulo(request.getParameter("titulo"), Integer.parseInt(request.getParameter("paginas")),libro);
 		
 		sl.salvarCapitulo(capitu);
-		
-
-		//List<Capitulo> lista =new CapituloRepositorioJPA().buscarTodosLosCapitulos();
-		//request.setAttribute("listaCapitulo", lista);
-
-		
 		//request.setAttribute("listaCapitulo", repoCapitulo.buscarTodosParaUnLibro(libro));
 
-	//	despachar(request, response, "listadoCapitulos.jsp");	
+		//despachar(request, response, "listadoCapitulos.jsp");	
 		
-		response.sendRedirect("ServletControladorFrontal?accion=listaCapituloPorLibro&titulo="+request.getParameter("libro_titulo"));
-
+		response.sendRedirect("ServletControladorFrontal?accion=envioLibro&libro_titulo="+request.getParameter("libro_titulo"));
+		
 	}
 
 }
