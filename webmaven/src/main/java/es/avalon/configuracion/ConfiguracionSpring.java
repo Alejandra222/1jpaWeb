@@ -53,6 +53,7 @@ public class ConfiguracionSpring {
     <artifactId>spring-data-jpa</artifactId>
     <version>2.1.6.RELEASE</version>
 </dependency>
+
 */	
 	
 	
