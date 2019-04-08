@@ -7,10 +7,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.avalon.jpa.negocio.Capitulo;
-import es.avalon.repositorios.CapituloRepositorioJPA;
-import es.avalon.servicios.ServicioLibros;
+import org.springframework.stereotype.Component;
 
+import es.avalon.jpa.negocio.Capitulo;
+import es.avalon.repositorios.jpa.CapituloRepositorioJPA;
+import es.avalon.servicios.ServicioLibros;
+import es.avalon.servicios.impl.ServicioLibrosImpl;
+
+
+@Component
 public class FormularioEditarCapitulo extends Accion {
 
 	@Override
@@ -20,7 +25,7 @@ public class FormularioEditarCapitulo extends Accion {
 		System.out.println("************OBTENGO " + request.getParameter("titulo"));
 		
 		//CapituloRepositorioJPA repoCapitulo = new CapituloRepositorioJPA();
-		ServicioLibros sl = new ServicioLibros();
+		ServicioLibros sl = new ServicioLibrosImpl();
 		Capitulo capiEdit = sl.buscarUnCapitulo(request.getParameter("titulo"));
 		
 		System.out.println("PEPE*******  "+capiEdit.getTitulo());

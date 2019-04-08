@@ -8,12 +8,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import es.avalon.jpa.negocio.Libro;
-import es.avalon.repositorios.LibroRepositorioJPA;
+import es.avalon.repositorios.jpa.LibroRepositorioJPA;
 import es.avalon.servicios.ServicioLibros;
 
 public class InsertarLibroAccion extends Accion {
 
+	@Autowired
+	ServicioLibros miservicio;
+	
 	@Override
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -22,11 +27,12 @@ public class InsertarLibroAccion extends Accion {
 		Libro miLibro = new Libro(request.getParameter("titulo"), request.getParameter("autor"),
 				Integer.parseInt(request.getParameter("paginas")));
 
-		//LibroRepositorioJPA repositorio = new LibroRepositorioJPA();
-		ServicioLibros sl = new ServicioLibros();
-		sl.insertarLibro(miLibro);
+		
+		//ServicioLibros sl = new ServicioLibros();
+		//sl.insertarLibro(miLibro);
+		miservicio.insertarLibro(miLibro);
 
-		List<Libro> lista = sl.buscarTodosLosLibros();
+		List<Libro> lista = miservicio.buscarTodosLosLibros();
 
 
 		request.setAttribute("listaLibros", lista);

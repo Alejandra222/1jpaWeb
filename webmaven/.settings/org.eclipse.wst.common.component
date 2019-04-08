@@ -20,7 +20,6 @@
         </dependent-module>
                 
         <property name="context-root" value="webmaven"/>
-                
         <property name="java-output-path" value="/webmaven/target/classes"/>
             
     </wb-module>

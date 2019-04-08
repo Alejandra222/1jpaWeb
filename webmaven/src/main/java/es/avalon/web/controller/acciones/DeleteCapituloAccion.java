@@ -8,10 +8,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.avalon.jpa.negocio.Capitulo;
-import es.avalon.repositorios.CapituloRepositorioJPA;
-import es.avalon.servicios.ServicioLibros;
+import org.springframework.stereotype.Component;
 
+import es.avalon.jpa.negocio.Capitulo;
+import es.avalon.repositorios.jpa.CapituloRepositorioJPA;
+import es.avalon.servicios.ServicioLibros;
+import es.avalon.servicios.impl.ServicioLibrosImpl;
+
+@Component
 public class DeleteCapituloAccion extends Accion {
 
 	@Override
@@ -21,7 +25,7 @@ public class DeleteCapituloAccion extends Accion {
 		System.out.println(request.getParameter("libro_titulo")+" ************OBTENGO " + request.getParameter("titulo"));
 		
 		//CapituloRepositorioJPA cr = new CapituloRepositorioJPA();
-		ServicioLibros sl = new ServicioLibros();
+		ServicioLibros sl = new ServicioLibrosImpl();
 		sl.deleteCapitulo(new Capitulo(request.getParameter("titulo")));
 
 		response.sendRedirect("ServletControladorFrontal?accion=envioLibro&libro_titulo="+request.getParameter("libro_titulo"));

@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import es.avalon.jpa.negocio.Libro;
-import es.avalon.repositorios.LibroRepositorioJPA;
+import es.avalon.repositorios.jpa.LibroRepositorioJPA;
 import es.avalon.servicios.ServicioLibros;
 
 

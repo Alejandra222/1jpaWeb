@@ -8,12 +8,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import es.avalon.jpa.negocio.Libro;
-import es.avalon.repositorios.LibroRepositorioJPA;
+import es.avalon.repositorios.jpa.LibroRepositorioJPA;
 import es.avalon.servicios.ServicioLibros;
 
+@Component
 public class DeleteLibroAccion extends Accion {
 
+	@Autowired
+	ServicioLibros miservicio;
+	
 	@Override
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -22,13 +29,13 @@ public class DeleteLibroAccion extends Accion {
 		
 		System.out.println("************OBTENGO " + request.getParameter("titulo"));
 		Libro lb = new Libro(request.getParameter("titulo"));
-//		LibroRepositorioJPA repositorio= new LibroRepositorioJPA();
+
 		
-		ServicioLibros sl = new ServicioLibros();
-		sl.deleteLibro(lb);
+		//ServicioLibros sl = new ServicioLibros();
+		miservicio.deleteLibro(lb);
 		
 
-		List<Libro> lista = sl.buscarTodosLosLibros();
+		List<Libro> lista = miservicio.buscarTodosLosLibros();
 		request.setAttribute("listaLibros", lista);
 
 

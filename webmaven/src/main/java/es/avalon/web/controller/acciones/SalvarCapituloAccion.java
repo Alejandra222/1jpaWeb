@@ -8,12 +8,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Component;
+
 import es.avalon.jpa.negocio.Capitulo;
 import es.avalon.jpa.negocio.Libro;
-import es.avalon.repositorios.CapituloRepositorioJPA;
-import es.avalon.repositorios.LibroRepositorioJPA;
+import es.avalon.repositorios.jpa.CapituloRepositorioJPA;
+import es.avalon.repositorios.jpa.LibroRepositorioJPA;
 import es.avalon.servicios.ServicioLibros;
+import es.avalon.servicios.impl.ServicioLibrosImpl;
 
+@Component
 public class SalvarCapituloAccion extends Accion {
 
 	@Override
@@ -22,7 +26,7 @@ public class SalvarCapituloAccion extends Accion {
 	
 		//LibroRepositorioJPA repoLibro = new LibroRepositorioJPA();
 		//CapituloRepositorioJPA repoCapitulo = new CapituloRepositorioJPA();
-		ServicioLibros sl = new ServicioLibros();
+		ServicioLibros sl = new ServicioLibrosImpl();
 
 		Libro libro = sl.buscarUnoLibro(request.getParameter("libro_titulo"));
 		Capitulo capitu = new Capitulo(request.getParameter("titulo"), Integer.parseInt(request.getParameter("paginas")),libro);

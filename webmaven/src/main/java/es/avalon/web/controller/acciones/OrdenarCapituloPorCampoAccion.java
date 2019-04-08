@@ -7,9 +7,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.avalon.jpa.negocio.Capitulo;
-import es.avalon.servicios.ServicioLibros;
+import org.springframework.stereotype.Component;
 
+import es.avalon.jpa.negocio.Capitulo;
+import es.avalon.servicios.impl.ServicioLibrosImpl;
+
+
+@Component
 public class OrdenarCapituloPorCampoAccion extends Accion {
 
 	@Override
@@ -17,7 +21,7 @@ public class OrdenarCapituloPorCampoAccion extends Accion {
 			throws ServletException, IOException {
 
 		
-		List<Capitulo> lista =  new ServicioLibros().OrdenarCapitulosPorCampo(
+		List<Capitulo> lista =  new ServicioLibrosImpl().OrdenarCapitulosPorCampo(
 				request.getParameter("filtro"), request.getParameter("libro_titulo"));
 		request.setAttribute("listaCapitulo", lista);
 		despachar(request, response, "listadoCapitulos.jsp");
