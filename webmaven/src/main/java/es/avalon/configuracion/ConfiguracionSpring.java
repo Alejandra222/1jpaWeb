@@ -17,11 +17,14 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 
 @Configuration
 @ComponentScan("es.avalon")
 @EnableTransactionManagement
+@EnableWebMvc
 public class ConfiguracionSpring {
 	
 	//pull de conexión con bd en Spring o JPA
@@ -106,41 +109,19 @@ public class PersistenceJPAConfig{
 	    return properties;
 	}
    
-    
-   // ...
  
+     
+       @Bean
+        public InternalResourceViewResolver getInternalResourceViewResolver() {
+        System.out.println("llega");
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/vistas2/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    
+       }
+   
 }
 	
-	/*
-	@Bean
-	public Persona getPersona() {
-		
-		return new Persona("juan1");
-	}
-
-	@Bean
-	IServicioMensaje getServicioMensaje() {
-		return new ServicioMensaje();
-		
-	}
 	
-	@Bean
-	SpringVersionRepositorio getSpringVersionRepositorio() {
-		return new SpringVersionRepositorio();
-	}
-	
-	@Bean
-	SaludoRepositorio getSaludoRepositorio() {
-		return new SaludoRepositorio();
-	}
-	
-	
-	
-	@Bean
-	ServicioFachada getServicioFachada() {
-		ServicioFachada f = new ServicioFachada();
-		f.setRepoSaludo(getSaludoRepositorio());
-		f.setRepoVersion(getSpringVersionRepositorio());
-		return f;
-	}*/
 }
