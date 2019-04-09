@@ -115,27 +115,32 @@ public class ServletControladorFrontal extends HttpServlet {
 					}else if (tipoAccion.equals("insertarCapitulo")) {
 
 						//accion = new InsertarCapituloAccion();
-					
+						accion = context.getBean(InsertarCapituloAccion.class);
+						
 					}else if (tipoAccion.equals("borrarCapitulo")) {
 
 						//accion = new DeleteCapituloAccion();
+					accion = context.getBean(DeleteCapituloAccion.class);
 					
 					}else if (tipoAccion.equals("editarCapitulo")) {
 
 						//accion = new FormularioEditarCapitulo();
+					accion = context.getBean(FormularioEditarCapitulo.class);
 					
 					}else if (tipoAccion.equals("salvarCapitulo")) {
 
 						//accion = new SalvarCapituloAccion();
+					accion = context.getBean(SalvarCapituloAccion.class);
 					
 					}else if (tipoAccion.equals("searchCapitulo")) {
 
-						  //accion = new searchCapituloAccion();		    
-							
+						  //accion = new searchCapituloAccion();		    		
+						accion = context.getBean(searchCapituloAccion.class);
+						
 						}else if (tipoAccion.equals("ordenarCapitulosPorCampo")) {
 
 						 // accion = new OrdenarCapituloPorCampoAccion();		    
-							
+							accion = context.getBean(OrdenarCapituloPorCampoAccion.class);
 						}
 
 

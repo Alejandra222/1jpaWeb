@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import es.avalon.jpa.negocio.Capitulo;
@@ -20,18 +21,21 @@ import es.avalon.servicios.impl.ServicioLibrosImpl;
 @Component
 public class SalvarCapituloAccion extends Accion {
 
+	@Autowired
+	ServicioLibros miservicio;
+	
 	@Override
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	
-		//LibroRepositorioJPA repoLibro = new LibroRepositorioJPA();
-		//CapituloRepositorioJPA repoCapitulo = new CapituloRepositorioJPA();
-		ServicioLibros sl = new ServicioLibrosImpl();
+		//ServicioLibros sl = new ServicioLibrosImpl();
 
-		Libro libro = sl.buscarUnoLibro(request.getParameter("libro_titulo"));
+		//Libro libro = sl.buscarUnoLibro(request.getParameter("libro_titulo"));
+		Libro libro =miservicio.buscarUnoLibro(request.getParameter("libro_titulo"));
+		
 		Capitulo capitu = new Capitulo(request.getParameter("titulo"), Integer.parseInt(request.getParameter("paginas")),libro);
 		
-		sl.salvarCapitulo(capitu);
+		miservicio.salvarCapitulo(capitu);
 		//request.setAttribute("listaCapitulo", repoCapitulo.buscarTodosParaUnLibro(libro));
 
 		//despachar(request, response, "listadoCapitulos.jsp");	
