@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import es.avalon.jpa.negocio.Libro;
 import es.avalon.repositorios.jpa.LibroRepositorioJPA;
 import es.avalon.servicios.ServicioLibros;
 
+@Component
 public class InsertarLibroAccion extends Accion {
 
 	@Autowired
