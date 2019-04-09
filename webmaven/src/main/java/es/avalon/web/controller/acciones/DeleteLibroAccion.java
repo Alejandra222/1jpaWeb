@@ -35,7 +35,8 @@ public class DeleteLibroAccion extends Accion {
 		miservicio.deleteLibro(lb);
 		
 
-		List<Libro> lista = miservicio.buscarTodosLosLibros();
+		//List<Libro> lista = miservicio.buscarTodosLosLibros();
+		List<Libro> lista = (List<Libro>) miservicio.buscarTodosLosLibros();
 		request.setAttribute("listaLibros", lista);
 
 

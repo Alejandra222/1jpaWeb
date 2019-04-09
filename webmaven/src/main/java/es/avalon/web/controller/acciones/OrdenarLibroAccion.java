@@ -27,7 +27,7 @@ public class OrdenarLibroAccion extends Accion {
 	
 		
 		//ServicioLibros sl = new ServicioLibros();
-		 List<Libro> lista =miservicio.buscarTodosOrdenadosPorCampoLibro(request.getParameter("accion"));
+		 List<Libro> lista =(List<Libro>) miservicio.buscarTodosOrdenadosPorCampoLibro(request.getParameter("accion"));
 		 
 		request.setAttribute("listaLibros", lista);
 

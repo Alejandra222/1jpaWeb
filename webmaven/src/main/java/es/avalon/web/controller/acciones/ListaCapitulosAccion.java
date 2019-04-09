@@ -30,7 +30,7 @@ public class ListaCapitulosAccion extends Accion {
 		
 		 System.out.println("Listar Todos los capitulos");
 		//List<Capitulo> lista =  new ServicioLibros().buscarTodosCapitulo();
-		List<Capitulo> lista =  miservicio.buscarTodosCapitulo();
+		List<Capitulo> lista =  (List<Capitulo>) miservicio.buscarTodosCapitulo();
 		request.setAttribute("listaCapitulo", lista);
 		despachar(request, response, "listadoCapitulos.jsp");
 		

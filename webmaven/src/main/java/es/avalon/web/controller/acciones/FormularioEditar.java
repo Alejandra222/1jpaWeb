@@ -28,10 +28,10 @@ public class FormularioEditar extends Accion {
 		
 		System.out.println("************OBTENGO " + request.getParameter("titulo"));
 		String titulo =request.getParameter("titulo");
-		
+	
 		//ServicioLibros sl = new ServicioLibros();
-		Libro libro =miservicio.buscarUnoLibro(titulo);
-		
+		//Libro libro =miservicio.buscarUnoLibro(titulo);
+		Libro libro =miservicio.buscarUnoLibro(request.getParameter("titulo"));
 		request.setAttribute("editoLibro", libro);
 		
 		despachar(request, response, "formularioEditar.jsp");

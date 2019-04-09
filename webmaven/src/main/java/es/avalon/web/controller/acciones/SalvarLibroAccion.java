@@ -33,7 +33,7 @@ public class SalvarLibroAccion extends Accion {
 		//ServicioLibros sl = new ServicioLibros();
 		miservicio.salvarLibro(miLibro);
 
-		List<Libro> lista = miservicio.buscarTodosLosLibros();
+		List<Libro> lista = (List<Libro>) miservicio.buscarTodosLosLibros();
 		request.setAttribute("listaLibros", lista);
 
 		despachar(request, response, "listado.jsp");

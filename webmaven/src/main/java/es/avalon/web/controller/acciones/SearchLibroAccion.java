@@ -26,7 +26,7 @@ public class SearchLibroAccion extends Accion {
 		
 		System.out.println("Search libros");
 		//List<Libro> lista =new ServicioLibros().searchLibro(request.getParameter("titulo"));
-		List<Libro> lista = miservicio.searchLibro(request.getParameter("titulo"));
+		List<Libro> lista = (List<Libro>) miservicio.searchLibro(request.getParameter("titulo"));
 
 		request.setAttribute("listaLibros", lista);
 

@@ -30,7 +30,7 @@ public class MostrarCapitulosDeLibro extends Accion {
 		
 		//ServicioLibros sl = new ServicioLibros();
 		//List<Capitulo> lista = sl.buscarTodosParaUnLibroCapitulo(new Libro(request.getParameter("libro_titulo")));
-		List<Capitulo> lista = miservicio.buscarTodosParaUnLibroCapitulo(new Libro(request.getParameter("libro_titulo")));
+		List<Capitulo> lista = (List<Capitulo>) miservicio.buscarTodosParaUnLibroCapitulo(new Libro(request.getParameter("libro_titulo")));
 
 		request.setAttribute("listaCapitulo", lista);
 

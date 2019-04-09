@@ -34,7 +34,7 @@ public class InsertarLibroAccion extends Accion {
 		//sl.insertarLibro(miLibro);
 		miservicio.insertarLibro(miLibro);
 
-		List<Libro> lista = miservicio.buscarTodosLosLibros();
+		List<Libro> lista = (List<Libro>) miservicio.buscarTodosLosLibros();
 
 
 		request.setAttribute("listaLibros", lista);

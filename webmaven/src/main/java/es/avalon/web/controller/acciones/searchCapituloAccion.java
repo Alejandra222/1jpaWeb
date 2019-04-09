@@ -26,7 +26,7 @@ public class searchCapituloAccion extends Accion {
 			throws ServletException, IOException {
 
 		//List<Capitulo> lista =  new ServicioLibrosImpl().searchCapitulo(
-		List<Capitulo> lista =  miservicio.searchCapitulo(	
+		List<Capitulo> lista =  (List<Capitulo>) miservicio.searchCapitulo(	
 				request.getParameter("titulo"), request.getParameter("libro_titulo"));
 		request.setAttribute("listaCapitulo", lista);
 		despachar(request, response, "listadoCapitulos.jsp");

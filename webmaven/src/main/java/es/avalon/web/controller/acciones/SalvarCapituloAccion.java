@@ -28,8 +28,7 @@ public class SalvarCapituloAccion extends Accion {
 	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	
-		//ServicioLibros sl = new ServicioLibrosImpl();
-
+		
 		//Libro libro = sl.buscarUnoLibro(request.getParameter("libro_titulo"));
 		Libro libro =miservicio.buscarUnoLibro(request.getParameter("libro_titulo"));
 		

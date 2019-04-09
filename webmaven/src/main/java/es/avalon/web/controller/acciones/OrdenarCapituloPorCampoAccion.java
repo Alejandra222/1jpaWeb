@@ -26,7 +26,7 @@ public class OrdenarCapituloPorCampoAccion extends Accion {
 			throws ServletException, IOException {
 
 		
-		List<Capitulo> lista = miservicio.OrdenarCapitulosPorCampo(
+		List<Capitulo> lista = (List<Capitulo>) miservicio.OrdenarCapitulosPorCampo(
 				request.getParameter("filtro"), request.getParameter("libro_titulo"));
 		request.setAttribute("listaCapitulo", lista);
 		despachar(request, response, "listadoCapitulos.jsp");

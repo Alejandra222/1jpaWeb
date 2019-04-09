@@ -30,7 +30,7 @@ public class ListaLibrosAccion extends Accion {
 		
 		 System.out.println("Listar Todos los libros");
 		//List<Libro> lista =new ServicioLibros().buscarTodosLosLibros();
-		 List<Libro> lista = miservicio.buscarTodosLosLibros(); 
+		 List<Libro> lista = (List<Libro>) miservicio.buscarTodosLosLibros(); 
 		request.setAttribute("listaLibros", lista);
 
 		despachar(request, response, "listado.jsp");
