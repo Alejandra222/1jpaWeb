@@ -10,7 +10,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 
-<link rel='stylesheet' type='text/css' href='./css/css1.css'>
+<link rel='stylesheet' type='text/css' href='../resources/css/css1.css'>
 	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'>
 	<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 		<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js'></script>
@@ -31,7 +31,7 @@
 <div class='col-xs-4'></div>
 <div class='col-xs-8'>
 	
-	<form action="">
+	<form action="search">
 	
 		<p>
 			<input class='glyphicon glyphicon-trash' type="text" name="titulo" placeholder=" título..." />
@@ -57,7 +57,7 @@
 </div>
 
 <div class='col-xs-3 margintop'>	
-	<a href="ServletControladorFrontal?accion=listaCapitulos&libro_titulo=" class='colorNuevo'><span class='glyphicon glyphicon-list-alt'></span>   Capítulos</a>
+	<a href="../capitulos/listaTodos?libro_titulo=" class='colorNuevo'><span class='glyphicon glyphicon-list-alt'></span>   Capítulos</a>
 </div>
 </div>
 	
@@ -66,9 +66,9 @@
 	<table>
 
 		<tr>
-			<th><a href="ServletControladorFrontal?accion=titulo">TÍTULO</a></th>
-			<th><a href="ServletControladorFrontal?accion=autor">AUTOR</a></th>
-			<th><a href="ServletControladorFrontal?accion=paginas">PÁGINAS</a></th>
+			<th><a href="ordenarCampos?campo=titulo">TÍTULO</a></th>
+			<th><a href="ordenarCampos?campo=autor">AUTOR</a></th>
+			<th><a href="ordenarCampos?campo=paginas">PÁGINAS</a></th>
 		</tr>
 
 		
@@ -80,9 +80,9 @@
 			<td>${l.autor}</td>
 			<td>${l.paginas}</td>
 		
-			<td><a href="ServletControladorFrontal?accion=borrar&titulo=${l.titulo}" class='btn btn-light btn-sm colorBorrar'><span class='glyphicon glyphicon-trash'></span>     Borrar</a></td>
-			<td><a href="ServletControladorFrontal?accion=editarFormulario&titulo=${l.titulo}" class='btn btn-light btn-sm colorEditar'><span class='glyphicon glyphicon-pencil'></span>     Editar</a></td>
-			<td><a href="ServletControladorFrontal?accion=envioLibro&libro_titulo=${l.titulo}" class='btn btn-light btn-sm colorIrCapitulo'><span class='glyphicon glyphicon-eye-open'></span>     Ver capitulos</a></td>
+			<td><a href="borrar?titulo=${l.titulo}" class='btn btn-light btn-sm colorBorrar'><span class='glyphicon glyphicon-trash'></span>     Borrar</a></td>
+			<td><a href="editarFormulario?titulo=${l.titulo}" class='btn btn-light btn-sm colorEditar'><span class='glyphicon glyphicon-pencil'></span>     Editar</a></td>
+			<td><a href="../capitulos/lista?libro_titulo=${l.titulo}" class='btn btn-light btn-sm colorIrCapitulo'><span class='glyphicon glyphicon-eye-open'></span>     Ver capitulos</a></td>
 		
 		</tr>
 		

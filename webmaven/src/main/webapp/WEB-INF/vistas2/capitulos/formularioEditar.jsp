@@ -64,7 +64,7 @@
 				 		
 						
 						<a
-						href="ServletControladorFrontal?accion=envioLibro&libro_titulo=${libro_titulo}"
+						href="salvar?libro_titulo=${libro_titulo}"
 						class='colorNuevo marginSalir'><span
 						class='glyphicon glyphicon-log-in'></span> Salir</a>
 				</div>

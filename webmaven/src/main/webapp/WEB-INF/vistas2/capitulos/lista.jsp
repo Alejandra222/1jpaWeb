@@ -81,14 +81,14 @@
 				<c:if test="${!param.libro_titulo.equals('')}">
 
 					<a
-						href="formularioInsertarCapitulos?libro_titulo=${param.libro_titulo}"
+						href="formularioInsertar?libro_titulo=${param.libro_titulo}"
 						class='colorNuevo'><span class='glyphicon glyphicon-plus'></span>
 						Nuevo</a>
 				</c:if>
 			</div>
 
 			<div class='col-xs-3 margintop'>
-				<a href="lista" class='colorNuevo'><span
+				<a href="../libros/lista" class='colorNuevo'><span
 					class='glyphicon glyphicon-book'></span> Libros</a>
 			</div>
 		</div>
@@ -118,7 +118,7 @@
 
 
 						<td><a
-							href="ServletControladorFrontal?accion=borrarCapitulo&titulo=${l.titulo}&libro_titulo=${param.libro_titulo}"
+							href="borrar&titulo=${l.titulo}&libro_titulo=${param.libro_titulo}"
 							class='btn btn-light btn-sm colorBorrar'><span
 								class='glyphicon glyphicon-trash'></span> Borrar</a> <a
 							href="ServletControladorFrontal?accion=editarCapitulo&titulo=${l.titulo}&libro_titulo=${param.libro_titulo}"

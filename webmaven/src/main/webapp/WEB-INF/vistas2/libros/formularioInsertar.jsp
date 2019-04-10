@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 
-<link rel='stylesheet' type='text/css' href='./css/css1.css'>
+<link rel='stylesheet' type='text/css' href='../resources/css/css1.css'>
 <link rel='stylesheet'
 	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'>
 <script
@@ -24,7 +24,7 @@
 			Nuevo <span class="glyphicon glyphicon-book"></span>
 		</h3>
 
-		<form action="ServletControladorFrontal">
+		<form action="insertar">
 
 			<div class='row'>
 				<div class='col-xs-3'>
@@ -46,7 +46,7 @@
 					<br> 
 						<input type="submit" value="Guardar" class='btn btn-warning'>
 					
-					<a href="ServletControladorFrontal?accion=" class='colorNuevo marginSalir'><span
+					<a href="lista" class='colorNuevo marginSalir'><span
 							class='glyphicon glyphicon-log-in'></span> Salir</a>
 				
 				</div>

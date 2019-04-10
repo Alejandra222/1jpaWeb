@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 
-<link rel='stylesheet' type='text/css' href='./css/css1.css'>
+<link rel='stylesheet' type='text/css' href='../resources/css/css1.css'>
 <link rel='stylesheet'
 	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'>
 <script

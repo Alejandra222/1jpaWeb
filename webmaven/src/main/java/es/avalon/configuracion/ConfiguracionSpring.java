@@ -6,7 +6,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
-
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -18,6 +17,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 
@@ -25,7 +26,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan("es.avalon")
 @EnableTransactionManagement
 @EnableWebMvc
-public class ConfiguracionSpring {
+public class ConfiguracionSpring implements WebMvcConfigurer {
 	
 	//pull de conexión con bd en Spring o JPA
 	
@@ -68,11 +69,6 @@ public class ConfiguracionSpring {
 */	
 	
 	
-	
-@Configuration
-@EnableTransactionManagement
-public class PersistenceJPAConfig{
- 
    @Bean
    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
       LocalContainerEntityManagerFactoryBean em 
@@ -120,8 +116,16 @@ public class PersistenceJPAConfig{
         return resolver;
     
        }
+       
+      //NECESARIO PARA LOS .CSS 
+       //añadir los implement en:
+       //class PersistenceJPAConfig implements WebMvcConfigurer
+       //class ConfiguracionSpring implements WebMvcConfigurer
+       public void addResourceHandlers(ResourceHandlerRegistry registry) {
+           registry.addResourceHandler("/resources/**").addResourceLocations("/resources/"); 
+       }
    
-}
+
 	
 	
 }
