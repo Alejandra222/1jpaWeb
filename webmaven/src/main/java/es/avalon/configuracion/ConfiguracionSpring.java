@@ -46,7 +46,7 @@ public class ConfiguracionSpring implements WebMvcConfigurer {
 	    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 	    dataSource.setUrl("jdbc:mysql://localhost/avalon?serverTimezone=UTC");
 	    dataSource.setUsername( "root" );
-	    dataSource.setPassword( "root" );
+	    dataSource.setPassword( "" );
 	    return dataSource;
 	    
 	    

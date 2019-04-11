@@ -17,8 +17,8 @@ import es.avalon.jpa.negocio.Libro;
 import es.avalon.servicios.ServicioLibros;
 
 @Controller
-@RequestMapping("/libros")
-public class LibroController {
+@RequestMapping("/categorias")
+public class CategoriaController {
 
 	@Autowired
 	ServicioLibros miservicio;
@@ -27,9 +27,12 @@ public class LibroController {
 	public String listar(Model modelo) {
 		
 		//pasa datos a la vista
-		modelo.addAttribute("listaLibros", miservicio.buscarTodosLosLibros());
-		return "libros/lista";
+		modelo.addAttribute("listaLibros", miservicio.buscarTodosLosCategorias());
+		return "categorias/lista";
 	}
+	
+	
+	
 	
 	@RequestMapping("/formularioInsertar")
 	public String formularioInsertar(Model modelo) {
@@ -119,13 +122,7 @@ EN LA CLASE LIBRO TENEMOS @NotEmpty   @Pattern(regexp="^[A-Za-z] {5,10}$")
 		return "libros/lista";
 	}
 	
-	@RequestMapping("/search")
-	public String search(Model modelo, String titulo) {
-	
-		modelo.addAttribute("listaLibros", miservicio.searchLibro(titulo));
-		
-		return "libros/lista";
-	}
+
 	
 	/*@RequestMapping("/verCapitulos")
 	public String irTodosLosCapitulos(Model modelo, String libro_titulo) {
@@ -136,11 +133,5 @@ EN LA CLASE LIBRO TENEMOS @NotEmpty   @Pattern(regexp="^[A-Za-z] {5,10}$")
 		return "libros/listadoCapitulos";
 	}*/
 	
-	@RequestMapping("/ordenarCampos")
-	public String ordenarCampos(Model modelo, String campo) {
 	
-		modelo.addAttribute("listaLibros", miservicio.buscarTodosOrdenadosPorCampoLibro(campo));
-		
-		return "libros/lista";
-	}
 }

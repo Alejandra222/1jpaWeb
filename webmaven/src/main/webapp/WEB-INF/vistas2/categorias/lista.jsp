@@ -25,7 +25,7 @@
 <div class="container">
 <div class='row'>
 
-<h3 align="center" class="titulo">   Libros   <span class="glyphicon glyphicon-search"></span></h3>
+<h3 align="center" class="titulo">   Categorias   <span class="glyphicon glyphicon-search"></span></h3>
 
 <div class='row'>
 <div class='col-xs-4'></div>
@@ -48,8 +48,8 @@
 
 <div class="container">
 <div class='row'>
-<div class='col-xs-4'>
-<h3>Lista de <span class="glyphicon glyphicon-book"></span></h3>
+<div class='col-xs-7'>
+<h3>Lista de <span class="glyphicon glyphicon-folder-open"></span></h3>
 </div>
 
 <div class='col-xs-2 margintop'>	
@@ -57,14 +57,8 @@
 </div>
 
 <div class='col-xs-3 margintop'>	
-	<a href="../categorias/lista?libro_titulo=" class='colorNuevo'><span class='glyphicon glyphicon-folder-open'></span>    Categorías</a>
-</div>
-
-<div class='col-xs-3 margintop'>	
 	<a href="../capitulos/listaTodos?libro_titulo=" class='colorNuevo'><span class='glyphicon glyphicon-list-alt'></span>   Capítulos</a>
 </div>
-
-
 </div>
 	
 
@@ -72,9 +66,9 @@
 	<table>
 
 		<tr>
-			<th><a href="ordenarCampos?campo=titulo">TÍTULO</a></th>
-			<th><a href="ordenarCampos?campo=autor">AUTOR</a></th>
-			<th><a href="ordenarCampos?campo=paginas">PÁGINAS</a></th>
+			<th><a href="ordenarCampos?campo=titulo">ID</a></th>
+			<th><a href="ordenarCampos?campo=autor">NOMBRE</a></th>
+		
 		</tr>
 
 		
@@ -82,13 +76,12 @@
 		<c:forEach items ="${listaLibros}" var="l">
      
          	<tr>
-			<td>${l.titulo}</td>
-			<td>${l.autor}</td>
-			<td>${l.paginas}</td>
+			<td>${l.id}</td>
+			<td>${l.nombre}</td>
 		
-			<td><a href="borrar?titulo=${l.titulo}" class='btn btn-light btn-sm colorBorrar'><span class='glyphicon glyphicon-trash'></span>     Borrar</a></td>
-			<td><a href="editarFormulario?titulo=${l.titulo}" class='btn btn-light btn-sm colorEditar'><span class='glyphicon glyphicon-pencil'></span>     Editar</a></td>
-			<td><a href="../capitulos/lista?libro_titulo=${l.titulo}" class='btn btn-light btn-sm colorIrCapitulo'><span class='glyphicon glyphicon-eye-open'></span>     Ver capitulos</a></td>
+<%-- 			<td><a href="borrar?titulo=${l.titulo}" class='btn btn-light btn-sm colorBorrar'><span class='glyphicon glyphicon-trash'></span>     Borrar</a></td> --%>
+<%-- 			<td><a href="editarFormulario?titulo=${l.titulo}" class='btn btn-light btn-sm colorEditar'><span class='glyphicon glyphicon-pencil'></span>     Editar</a></td> --%>
+ 			<td><a href="verLibrosPorCategoria?id=${l.id}" class='btn btn-light btn-sm colorIrCapitulo'><span class='glyphicon glyphicon-eye-open'></span>     Ver capitulos</a></td> 
 		
 		</tr>
 		
