@@ -28,11 +28,6 @@
 </dependency>
 
 
-		<dependency>
-			<groupId>es.avalon</groupId>
-			<artifactId>serviciosavalon</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 <dependency>
@@ -40,6 +35,11 @@
     <artifactId>spring-webmvc</artifactId>
     <version>5.1.6.RELEASE</version>
 </dependency>
-		
+
+		<dependency>
+			<groupId>es.avalon</groupId>
+			<artifactId>serviciosavalon</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>

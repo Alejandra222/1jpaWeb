@@ -37,7 +37,7 @@
 				<div class='col-xs-4'></div>
 				<div class='col-xs-8'>
 
-					<form action="">
+					<form action="search">
 
 						<p>
 							<input class='glyphicon glyphicon-trash' type="text"
@@ -49,7 +49,7 @@
 							value="${param.libro_titulo}"> 
 							
 
-						<input type="hidden" name="accion" value="searchCapitulo" />
+<!-- 						<input type="hidden" name="accion" value="searchCapitulo" /> -->
 					</form>
 
 				</div>
@@ -99,9 +99,9 @@
 
 			<tr>
 				<th><a
-					href="?accion=ordenarCapitulosPorCampo&filtro=titulo&libro_titulo=${param.libro_titulo}">TÍTULO</a></th>
+					href="ordenarCampo?campo=titulo&libro_titulo=${param.libro_titulo}">TÍTULO</a></th>
 				<th><a
-					href="?accion=ordenarCapitulosPorCampo&filtro=paginas&libro_titulo=${param.libro_titulo}">PÁGINAS</a></th>
+					href="ordenarCampo?campo=paginas&libro_titulo=${param.libro_titulo}">PÁGINAS</a></th>
 
 				<%-- 		<th>	<a	href="?accion=libro_titulo&filtro=libro_titulo&titulo=<%=request.getParameter("titulo")%>">CAPITULO_LIBRO</a></th> --%>
 			</tr>
@@ -118,10 +118,10 @@
 
 
 						<td><a
-							href="borrar&titulo=${l.titulo}&libro_titulo=${param.libro_titulo}"
+							href="borrar?titulo=${l.titulo}&libro_titulo=${param.libro_titulo}"
 							class='btn btn-light btn-sm colorBorrar'><span
 								class='glyphicon glyphicon-trash'></span> Borrar</a> <a
-							href="ServletControladorFrontal?accion=editarCapitulo&titulo=${l.titulo}&libro_titulo=${param.libro_titulo}"
+							href="editarFormulario?titulo=${l.titulo}&libro_titulo=${param.libro_titulo}"
 							class='btn btn-light btn-sm colorEditar'><span
 								class='glyphicon glyphicon-pencil'></span> Editar</a></td>
 

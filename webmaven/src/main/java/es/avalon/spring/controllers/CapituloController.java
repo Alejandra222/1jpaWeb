@@ -63,9 +63,11 @@ public class CapituloController {
 	
 	//@ModelAttribute recoje el String titulo del html y lo asigna a la propiedad titulo del objeto Libro
 	@RequestMapping("/borrar")
-	public String borrar(String titulo, String libro_titulo, Model modelo) {
-		
-		miservicio.deleteCapitulo(new Capitulo(titulo));
+	public String borrar(@ModelAttribute Capitulo capitulo, String libro_titulo, Model modelo) {
+		Libro l = new Libro(libro_titulo);
+		capitulo.setLibro(l);
+		System.out.println(capitulo.getTitulo());
+		miservicio.deleteCapitulo(capitulo);
 		modelo.addAttribute("listaCapitulo", miservicio.buscarTodosParaUnLibroCapitulo(new Libro(libro_titulo)));
 		
 		return "capitulos/lista";
@@ -77,46 +79,39 @@ public class CapituloController {
 	
 		Capitulo capitulo = miservicio.buscarUnCapitulo(titulo);
 		modelo.addAttribute("libro_titulo", libro_titulo);
-		modelo.addAttribute("editoCapitulo", capitulo);
+		modelo.addAttribute("editoLibro", capitulo);
 		
-		return "capitulo/formularioEditar";
+		return "capitulos/formularioEditar";
 	}
 	
 	
 	
 	@RequestMapping("/salvar")
-	//public String salvarLibro(Model modelo, @ModelAttribute Capitulo capitulo) {
-	public String salvar(Model modelo, String titulo, int paginas, String libro_titulo) {
+	public String salvar(Model modelo, @ModelAttribute Capitulo capitulo, String libro_titulo) {
 		Libro libro = miservicio.buscarUnoLibro(libro_titulo);
-		Capitulo capitulo = new Capitulo(titulo, paginas, libro);
-		modelo.addAttribute("libro_titulo", libro_titulo);
-		modelo.addAttribute("editoCapitulo", capitulo);
+		capitulo.setLibro(libro);
 		
 		miservicio.salvarCapitulo(capitulo);
-		modelo.addAttribute("listaLibros", miservicio.buscarTodosParaUnLibroCapitulo(new Libro(libro_titulo)));
+		//modelo.addAttribute("libro_titulo", libro_titulo);
+		modelo.addAttribute("listaCapitulo", miservicio.buscarTodosParaUnLibroCapitulo(new Libro(libro_titulo)));
 		
-		return "libros/lista";
+		return "capitulos/lista";
 	}
 	
 	
+	@RequestMapping("/search")
+	public String search(Model modelo, String libro_titulo, String titulo) {
 	
-	
-	
-	
-	
-	@RequestMapping("/searchLibro")
-	public String searchLibro(Model modelo, String titulo) {
-	
-		modelo.addAttribute("listaLibros", miservicio.searchLibro(titulo));
+		modelo.addAttribute("listaCapitulo", miservicio.searchCapitulo(titulo, libro_titulo));
 		
-		return "libros/lista";
+		return "capitulos/lista";
 	}
 	
-	@RequestMapping("/ordenarCamposLibro")
-	public String ordenarCamposLibro(Model modelo, String campo) {
+	@RequestMapping("/ordenarCampo")
+	public String ordenarCampos(Model modelo, String campo, String libro_titulo) {
 	
-		modelo.addAttribute("listaLibros", miservicio.buscarTodosOrdenadosPorCampoLibro(campo));
+		modelo.addAttribute("listaCapitulo", miservicio.OrdenarCapitulosPorCampo(campo, libro_titulo));
 		
-		return "libros/lista";
+		return "capitulos/lista";
 	}
 }

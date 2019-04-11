@@ -25,7 +25,7 @@
 		<h3 align="center" class="tituloNuevoLibro">
 			Capitulo <span class="glyphicon glyphicon-edit"></span>
 		</h3>
-		<form action="ServletControladorFrontal">
+		<form action="salvar">
 			<div class='row'>
 				<div class='col-xs-3'>
 					<p>
@@ -58,13 +58,9 @@
 						<input type="hidden"
 						name="libro_titulo"
 						value="${libro_titulo}" /> 
-						
-						<input type="hidden" name="accion" 
-						value="salvarCapitulo" /> 
-				 		
-						
+					
 						<a
-						href="salvar?libro_titulo=${libro_titulo}"
+						href="lista?libro_titulo=${libro_titulo}"
 						class='colorNuevo marginSalir'><span
 						class='glyphicon glyphicon-log-in'></span> Salir</a>
 				</div>
