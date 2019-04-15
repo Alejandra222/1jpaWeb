@@ -1,5 +1,7 @@
 package es.avalon.spring.controllers;
 
+import java.util.List;
+
 import javax.persistence.Id;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.avalon.jpa.negocio.Categoria;
 import es.avalon.jpa.negocio.Libro;
 import es.avalon.servicios.ServicioLibros;
 
@@ -31,13 +34,32 @@ public class CategoriaController {
 		return "categorias/lista";
 	}
 	
+	@RequestMapping("/verLibrosPorCategoria")
+	public String verLibrosPorCategorioa(Model modelo, int id, String nombre) {
+	
+		System.out.println(id);
+		System.out.println(nombre);
+		Categoria categ = (Categoria) miservicio.buscarLibrosPorCategoria(id);
+		
+		System.out.println("LIBROS ENCONTRADOS: "+categ.getLibros().size());
+		System.out.println(categ.getId());
+		System.out.println(categ.getNombre());
+		
+		modelo.addAttribute("nombre", nombre);
+		modelo.addAttribute("listaLibros", categ.getLibros());
+		
+		//return "categorias/verLibrosPorCategoria";
+		
+		modelo.addAttribute("listaLibros", categ.getLibros());
+		return "libros/lista";
+	}
 	
 	
 	
 	@RequestMapping("/formularioInsertar")
 	public String formularioInsertar(Model modelo) {
-		modelo.addAttribute("libro", new Libro());
-		return "libros/formularioInsertar";
+		modelo.addAttribute("categoria", new Categoria());
+		return "categorias/formularioInsertar";
 	}
 	
 //	@RequestMapping("/insertar")
@@ -74,20 +96,20 @@ EN LA CLASE LIBRO TENEMOS @NotEmpty   @Pattern(regexp="^[A-Za-z] {5,10}$")
 	private int paginas;
 */	
 	@RequestMapping(value="/insertar", method=RequestMethod.POST)
-	public String insertar(@Valid @ModelAttribute Libro libro, BindingResult resultado, Model modelo) {
+	public String insertar(@Valid @ModelAttribute Categoria categoria, BindingResult resultado, Model modelo) {
 	//IMPORTANTE EL ORDEN: @Valid @ModelAttribute Libro libro, BindingResult resultado	
-		System.out.println("TITULO: "+libro.getTitulo());
+		System.out.println("CATEGORIA NOMBRE: "+categoria.getNombre());
 		System.out.println("ERROR: "+resultado.hasErrors());
 		
 		
 		if(resultado.hasErrors()) {
-			return"libros/formularioInsertar";
+			return"categorias/formularioInsertar";
 		}else {
 		
-		miservicio.insertarLibro(libro);
-		modelo.addAttribute("listaLibros", miservicio.buscarTodosLosLibros());
+		miservicio.insertarCategoria(categoria);
+		modelo.addAttribute("listaLibros", miservicio.buscarTodosLosCategorias());
 		
-		return "libros/lista";
+		return "categorias/lista";
 		
 		}
 	}
