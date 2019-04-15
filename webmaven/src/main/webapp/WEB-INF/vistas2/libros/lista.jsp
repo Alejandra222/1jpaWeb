@@ -112,9 +112,9 @@
 		<table>
 
 			<tr>
-				<th><a href="ordenarCampos?campo=titulo">TÍTULO</a></th>
-				<th><a href="ordenarCampos?campo=autor">AUTOR</a></th>
-				<th><a href="ordenarCampos?campo=paginas">PÁGINAS</a></th>
+				<th><a href="ordenarCampoTitulo">TÍTULO</a></th>
+				<th><a href="ordenarCampoAutor">AUTOR</a></th>
+				<th><a href="ordenarCampoPaginas">PÁGINAS</a></th>
 			</tr>
 
 

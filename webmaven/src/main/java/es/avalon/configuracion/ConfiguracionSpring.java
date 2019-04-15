@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -21,11 +22,13 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+//@EnableJpaRepositories NECESARIO PARA SPRING DATA
 
 @Configuration
 @ComponentScan("es.avalon")
 @EnableTransactionManagement
 @EnableWebMvc
+@EnableJpaRepositories("es.avalon.repositorios")
 public class ConfiguracionSpring implements WebMvcConfigurer {
 	
 	//pull de conexión con bd en Spring o JPA

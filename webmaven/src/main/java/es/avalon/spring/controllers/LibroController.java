@@ -139,8 +139,40 @@ EN LA CLASE LIBRO TENEMOS @NotEmpty   @Pattern(regexp="^[A-Za-z] {5,10}$")
 	@RequestMapping("/ordenarCampos")
 	public String ordenarCampos(Model modelo, String campo) {
 	
-		modelo.addAttribute("listaLibros", miservicio.buscarTodosOrdenadosPorCampoLibro(campo));
+		//modelo.addAttribute("listaLibros", miservicio.buscarTodosOrdenadosPorCampoLibro(campo));
 		
 		return "libros/lista";
 	}
+	
+//	@RequestMapping("/ordenarCampoTitulo")
+//	public String ordenarCampoTitulo(Model modelo) {
+//	
+//		modelo.addAttribute("listaLibros", miservicio.buscarLibrosOrdenadosPorTituloAscendente());
+//		
+//		return "libros/lista";
+//	}
+	@RequestMapping("/ordenarCampoTitulo")
+	public String ordenarCampoTitulo(Model modelo) {
+		
+		modelo.addAttribute("listaLibros", miservicio.buscarLibrosOrdenadosPorTituloAscendente());
+		
+		return "libros/lista";
+	}
+	
+	@RequestMapping("/ordenarCampoAutor")
+	public String ordenarCampoAutor(Model modelo) {
+	
+		modelo.addAttribute("listaLibros", miservicio.buscarLibrosOrdenadosPorAutorAscendente());
+		
+		return "libros/lista";
+	}
+	
+	@RequestMapping("/ordenarCampoPaginas")
+	public String ordenarCampoPaginas(Model modelo) {
+	
+		modelo.addAttribute("listaLibros", miservicio.buscarLibrosOrdenadosPorPaginasAscendente());
+		
+		return "libros/lista";
+	}
+	
 }
