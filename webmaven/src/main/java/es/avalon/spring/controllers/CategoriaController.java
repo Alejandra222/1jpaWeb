@@ -37,7 +37,8 @@ public class CategoriaController {
 	@RequestMapping("/verLibrosPorCategoria")
 	public String verLibrosPorCategorioa(Model modelo, int id, String nombre) {
 	
-		System.out.println(id);
+		/*
+		 * System.out.println(id);
 		System.out.println(nombre);
 		Categoria categ = (Categoria) miservicio.buscarLibrosPorCategoria(id);
 		
@@ -47,10 +48,10 @@ public class CategoriaController {
 		
 		modelo.addAttribute("nombre", nombre);
 		modelo.addAttribute("listaLibros", categ.getLibros());
+		*/
 		
-		
-		//modelo.addAttribute("listaLibros", miservicio.buscarLibrosPorCategoriaQuery(new Categoria(id)));
-		//System.out.println("22222  LIBROS ENCONTRADOS: "+ ( (List<Libro>) miservicio.buscarLibrosPorCategoriaQuery(new Categoria(id))).size());
+		modelo.addAttribute("listaLibros", miservicio.buscarLibrosPorCategoriaQuery(new Categoria(id)));
+		System.out.println("LIBROS ENCONTRADOS: "+ ( (List<Libro>) miservicio.buscarLibrosPorCategoriaQuery(new Categoria(id))).size());
 		return "libros/lista";
 	}
 	
