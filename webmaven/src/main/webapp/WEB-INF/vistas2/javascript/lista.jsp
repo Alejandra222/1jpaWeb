@@ -73,6 +73,8 @@ $(document).ready(function(){
 				success: function (data){
 					console.log("todo ok");
 				},
+				
+				
 				data:JSON.stringify(libro)
 				
 				
