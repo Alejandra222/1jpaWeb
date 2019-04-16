@@ -74,6 +74,8 @@ $(document).ready(function(){
 					console.log("todo ok");
 				},
 				data:JSON.stringify(libro)
+				
+				
 			});
 		
 	});
