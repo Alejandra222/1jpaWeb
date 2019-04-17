@@ -13,22 +13,25 @@
 
 $(document).ready(function(){
 	
+	
+	//LISTA TODOS LOS LIBROS
 	$("#ajax").click(function(){
-		
-		$.get("../webapi/libros", function(datos){
-			
-			console.log(datos);
-			
-			datos.forEach((libro)=>{
-	
+		var $listaLibros =$("#listaLibros").empty();
+		//done: cuando la promesa finalice correctamente
+		listar().done(function(datos){
+			console.log(datos);	
+			datos.forEach((libro)=> {
 				$(`<option>\${libro.titulo}</option>`).appendTo("#listaLibros");
-			})
-		})
+
+			});
+		});
 	});
+		
+
 	
 	
 	
-	
+	//LISTA LOS CAPITULOS DE UN LIBRO
 		$("#listaLibros").change(function(){
 			var libro =$(this).val();
 		
@@ -39,7 +42,7 @@ $(document).ready(function(){
 			var $miselect = $("<select id='listaCap'/>");
 			$('#listaCap').remove();
 			
-			datos.forEach((capitulo)=> {
+			datos.forEach((capitulo)=>  {
 	
 				$(`<option>\${capitulo.titulo}</option>`).appendTo($miselect);
 			})
@@ -50,7 +53,7 @@ $(document).ready(function(){
 		});
 		
 		
-		
+	//INSERTA UN LIBRO	
 		$("#botonInsertar").click(function() {
 		
 			//console.log($("#titulo").val());
@@ -63,28 +66,46 @@ $(document).ready(function(){
 			libro.paginas =$("#paginas").val();
 			console.log(JSON.stringify(libro));
 			
+			var libroJson =JSON.stringify(libro);
+			//insertar(libroJson)--> esto devuelve una promesa
+			//done(function(datos)--> una vez finalizado 
+			//then(listar) -->	si el done va bien ejecuta el metodo listar del then y sino va bien ejecutaria el fail	
+			insertar(libroJson).then(listar).done(function(datos){
+
+				var $listaLibros =$("#listaLibros").empty();
+				datos.forEach((libro)=> {
+					
+					$(`<option>\${libro.titulo}</option>`).appendTo($listaLibros);
+				})
 			
-			
-			$.ajax({
-				url:'../webapi/libros',
-				type:'post',
-				dataType:'json',
-				contentType:'application/json',
-				success: function (data){
-					console.log("todo ok");
-				},
-				
-				
-				data:JSON.stringify(libro)
-				
-				
+			}).fail(function(error){
+				console.log(error);
 			});
+			
+// 			.success(function(datos){
+// 				console.log("finaliza" + datos)
+// 			});
+			
+			
+// 			$.ajax({
+// 				url:'../webapi/libros',
+// 				type:'post',
+// 				dataType:'json',
+// 				contentType:'application/json',
+// 				success: function (data){
+// 					console.log("todo ok");
+// 				},
+				
+				
+// 				data:JSON.stringify(libro)
+				
+				
+// 			});
 		
 	});
 		
 		
-		
-		
+		//BORRA UN LIBRO
 			$("#botonBorrar").click(function() {
 				var libro =$("#listaLibros").val();
 				console.log(libro);
@@ -101,6 +122,35 @@ $(document).ready(function(){
 				});
 				
 			});
+			
+			
+			
+			
+			//**************************
+			
+			function insertar(libroJson){
+				
+				return $.ajax({
+					url:'../webapi/libros',
+					type:'post',
+					contentType:'application/json',
+					success: function (data){
+	 					console.log("todo ok");
+	 				},
+					data:libroJson
+					
+					
+				});
+				
+			}
+			
+			
+			
+			
+			function listar(){
+				
+				return 	$.get("../webapi/libros");
+			}
 			
 	
 });
